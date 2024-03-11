@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize')
+const sequelize = require('../config/db')
+
 const UsersModel = require('./UsersModel')
 const PhoneNumbersModel = require('./PhoneNumbersModel')
 const OperatorModel = require('./OperatorModel')
@@ -31,6 +34,16 @@ const BookingModel = require('./BookingModel')
 // .catch(error => {
 //     console.error('Error during synchronization:', error);
 // });
+// const syncDatabase = async () => {
+//     try {
+//       await sequelize.sync({ force: true });
+//       console.log('⚡️ Tables synced');
+//     } catch (error) {
+//       console.error('Error syncing tables:', error);
+//     }
+//   };
+  
+// syncDatabase();
 
 UsersModel.hasMany(PhoneNumbersModel, { foreignKey: 'user_id'})
 PhoneNumbersModel.belongsTo(UsersModel, { foreignKey: 'user_id'})
