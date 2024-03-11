@@ -25,15 +25,25 @@ app.use("/api-docs", swaggerUi.serve,swaggerUi.setup(swaggerDocs))
 
 
 const PORT = process.env.PORT || 3005
-app.listen(PORT, () => {
-    console.log(`Server started at ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`Server started at ${PORT}`)
+// })
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('DB connected!')
+//   })
+//   .catch(err => console.log('error: ', err.message))
+
 sequelize
-  .authenticate()
-  .then(() => {
-    console.log('DB connected!')
-  })
-  .catch(err => console.log('error: ', err.message))
+ .authenticate()
+ .then(() => {
+   console.log('DB connected!');
+   app.listen(PORT, () => {
+     console.log(`Server started at ${PORT}`);
+   });
+ })
+ .catch(err => console.log('Error connecting to the database: ', err.message));
 
 
 

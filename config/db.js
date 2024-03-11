@@ -2,12 +2,14 @@
 const Sequelize = require('sequelize')
 
 const sequelize = new Sequelize(
-    process.env.DATABASE,
-    process.env.DB_USER,
-    process.env.PASSWORD,
+    // process.env.DB_NAME, 
+    // process.env.DB_USER, 
+    // process.env.DB_PASSWORD,
+    process.env.DATABASE_URL,
     {
       host: process.env.HOST,
-      dialect: process.env.DIALECT,
+      port: process.env.DB_PORT,
+      dialect: process.env.DIALECT
     }
   );
 
